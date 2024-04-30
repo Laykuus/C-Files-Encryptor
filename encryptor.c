@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     else
         encryption_path = "~";
 
-    list_files(encryption_path);
+    char** files = list_files(encryption_path, verbose);
 
     return 0;
 }

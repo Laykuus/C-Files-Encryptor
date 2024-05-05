@@ -45,7 +45,7 @@ char** list_files(char* path, int verbose) {
         if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
             continue;
 
-        char file_path[1000];
+        char file_path[10000];
         strcpy(file_path, path);
         strcat(file_path, "/");
         char* ptr = strcat(file_path, entry->d_name);

@@ -1,1 +1,0 @@
-char** list_files(char path[], int verbose);

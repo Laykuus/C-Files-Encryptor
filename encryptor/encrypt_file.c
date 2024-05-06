@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void char_replacment(char* file_name) {
+int encryption(char* file_name, int verbose) {
     FILE* pFile;
     char c;
     int file_size;
@@ -42,19 +42,7 @@ void char_replacment(char* file_name) {
         perror("Could not open file");
         exit(1);
     }
-
     fwrite(file_content, sizeof(char), file_size, pFile);
-}
-
-int encryption(char** files_to_encrypt, int verbose) {
-
-    for (int i = 0; files_to_encrypt[i] != NULL; i++)
-    {
-        if (verbose)
-            printf("Encrypting %s\n", files_to_encrypt[i]);
-
-        char_replacment(files_to_encrypt[i]);
-    }
     
     return 0;
 }

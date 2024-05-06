@@ -7,12 +7,15 @@ int encryption(char* file_name, int verbose) {
     char c;
     int file_size;
 
+    if (verbose) 
+        printf("Encrypting %s\n", file_name);
+
     // Extracting file's content
     pFile = fopen(file_name, "r");
 
     if (pFile == NULL) {
         perror("Could not open file");
-        exit(1);
+        return 1;
     }
 
     fseek(pFile, 0L, SEEK_END);
@@ -23,7 +26,7 @@ int encryption(char* file_name, int verbose) {
 
     if (file_content == NULL) {
         perror("malloc");
-        exit(1);
+        return 1;
     }
 
     fread(file_content, sizeof(char), file_size, pFile);
@@ -40,7 +43,7 @@ int encryption(char* file_name, int verbose) {
 
     if (pFile == NULL) {
         perror("Could not open file");
-        exit(1);
+        return 1;
     }
     fwrite(file_content, sizeof(char), file_size, pFile);
     

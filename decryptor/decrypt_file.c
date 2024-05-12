@@ -8,7 +8,7 @@ int decryption(char* file_name, int verbose) {
     int file_size;
 
     if (verbose) 
-        printf("Encrypting %s\n", file_name);
+        printf("Decrypting %s\n", file_name);
 
     // Extracting file's content
     pFile = fopen(file_name, "r");

